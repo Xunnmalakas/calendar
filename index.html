@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Calendar</title>
+    <!-- I-link ang CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1 id="yearTitle">2026 Calendar</h1>
+        <div class="nav-buttons">
+            <button onclick="changeYear(-1)">« Prev Year</button>
+            <button onclick="resetTo2026()" class="reset-btn">Back to 2026</button>
+            <button onclick="changeYear(1)">Next Year »</button>
+        </div>
+    </div>
+
+    <!-- Dito lalabas ang mga buwan -->
+    <div id="calendarContainer" class="calendar-grid"></div>
+
+    <!-- Pop-up Modal para sa Events/Notes -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <h3 id="selectedDateText">☁️ Date</h3>
+            <textarea id="eventInput" placeholder="Write your magic plans here... 🎀"></textarea>
+            <div class="modal-footer">
+                <button onclick="closeModal()" class="close-btn">Close</button>
+                <button onclick="saveEvent()" class="save-btn">Save ✨</button>
+                <button onclick="deleteEvent()" class="delete-btn">Delete 🌸</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- I-link ang JavaScript file sa dulo ng body -->
+    <script src="script.js"></script>
+</body>
+</html>
