@@ -1,56 +1,40 @@
-monthTitle.innerText = months[month];
-        body.innerHTML = "";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Calendar</title>
+    <!-- I-link ang CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        let date = 1;
-        for (let i = 0; i < 6; i++) {
-            let row = document.createElement("tr");
+    <div class="header">
+        <h1 id="yearTitle">2026 Calendar</h1>
+        <div class="nav-buttons">
+            <button onclick="changeYear(-1)">« Prev Year</button>
+            <button onclick="resetTo2026()" class="reset-btn">Back to 2026</button>
+            <button onclick="changeYear(1)">Next Year »</button>
+        </div>
+    </div>
 
-            for (let j = 0; j < 7; j++) {
-                let cell = document.createElement("td");
+    <!-- Dito lalabas ang mga buwan -->
+    <div id="calendarContainer" class="calendar-grid"></div>
 
-                if (i === 0 && j < firstDay) {
-                    cell.innerText = "";
-                } else if (date > daysInMonth) {
-                    cell.innerText = "";
-                } else {
-                    cell.innerText = date;
-                    
-                    // Highlight kung "Today" (March 8, 2026 base sa prompt)
-                    let realToday = new Date();
-                    if (year === 2026 && month === realToday.getMonth() && date === realToday.getDate()) {
-                        cell.classList.add("today");
-                    }
-                    date++;
-                }
-                row.appendChild(cell);
-            }
-            body.appendChild(row);
-            if (date > daysInMonth) break;
-        }
-    }
+    <!-- Pop-up Modal para sa Events/Notes -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <h3 id="selectedDateText">☁️ Date</h3>
+            <textarea id="eventInput" placeholder="Write your magic plans here... 🎀"></textarea>
+            <div class="modal-footer">
+                <button onclick="closeModal()" class="close-btn">Close</button>
+                <button onclick="saveEvent()" class="save-btn">Save ✨</button>
+                <button onclick="deleteEvent()" class="delete-btn">Delete 🌸</button>
+            </div>
+        </div>
+    </div>
 
-    function changeMonth(step) {
-        currentMonth += step;
-        if (currentMonth < 0) { 
-            currentMonth = 11; 
-            currentYear--; 
-        } else if (currentMonth > 11) { 
-            currentMonth = 0; 
-            currentYear++; 
-        }
-        updateCalendar(currentMonth, currentYear);
-    }
-
-    function resetToCurrent() {
-        currentMonth = 0; // January
-        currentYear = 2026;
-        updateCalendar(currentMonth, currentYear);
-    }
-
-    // Load initial calendar
-    updateCalendar(currentMonth, currentYear);
-
-</script>
-
+    <!-- I-link ang JavaScript file sa dulo ng body -->
+    <script src="script.js"></script>
 </body>
 </html>
